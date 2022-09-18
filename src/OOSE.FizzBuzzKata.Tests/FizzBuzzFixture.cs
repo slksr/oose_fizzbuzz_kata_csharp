@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Moq;
 using OOSE.FizzBuzzKata.FizzBuzzLogic;
 
 namespace OOSE.FizzBuzzKata.Tests
@@ -11,7 +12,10 @@ namespace OOSE.FizzBuzzKata.Tests
     {
         public FizzBuzzFixture()
         {
-            FizzBuzz = new FizzBuzz();
+            Mock<NameGenerator> mock = new Mock<NameGenerator>();
+            mock.Setup(x => x.GenerateRandomName()).Returns("testname");
+
+            FizzBuzz = new FizzBuzz(mock.Object);
         }
 
 

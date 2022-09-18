@@ -1,3 +1,6 @@
+using Moq;
+using OOSE.FizzBuzzKata.FizzBuzzLogic;
+
 namespace OOSE.FizzBuzzKata.Tests
 {
     public class FizzBuzzTest : IClassFixture<FizzBuzzFixture>
@@ -38,6 +41,15 @@ namespace OOSE.FizzBuzzKata.Tests
             Assert.Equal("", fixture.FizzBuzz.Turn(1));
             Assert.Equal("", fixture.FizzBuzz.Turn(2));
             Assert.Equal("", fixture.FizzBuzz.Turn(22));
+        }
+
+        [Fact]
+        public void AddsRandomNameToPlayerList()
+        {
+            // act
+            fixture.FizzBuzz.AddRandomPlayer();
+            // assert
+            Assert.Equal("testname", fixture.FizzBuzz.Players.First().Name);
         }
     }
 }
