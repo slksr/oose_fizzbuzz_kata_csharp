@@ -1,13 +1,11 @@
-using Moq;
-using OOSE.FizzBuzzKata.FizzBuzzLogic;
 
 namespace OOSE.FizzBuzzKata.Tests
 {
-    public class FizzBuzzTest : IClassFixture<FizzBuzzFixture>
+    public class FizzBuzzTest : IClassFixture<TestFixture>
     {
-        private readonly FizzBuzzFixture fixture;
+        private readonly TestFixture fixture;
 
-        public FizzBuzzTest(FizzBuzzFixture fixture)
+        public FizzBuzzTest(TestFixture fixture)
         {
             this.fixture = fixture;
         }
@@ -15,41 +13,33 @@ namespace OOSE.FizzBuzzKata.Tests
         [Fact]
         public void ReturnsFizzIfNumberisMulitpleOfThree()
         {
-            Assert.Equal("Fizz", fixture.FizzBuzz.Turn(3));
-            Assert.Equal("Fizz", fixture.FizzBuzz.Turn(6));
-            Assert.Equal("Fizz", fixture.FizzBuzz.Turn(9));
+            Assert.Equal("Fizz", fixture.KataFizzBuzz.Turn(3));
+            Assert.Equal("Fizz", fixture.KataFizzBuzz.Turn(6));
+            Assert.Equal("Fizz", fixture.KataFizzBuzz.Turn(9));
         }
 
         [Fact]
         public void ReturnsBuzzIfNumberisMulitpleOfFive()
         {
-            Assert.Equal("Buzz", fixture.FizzBuzz.Turn(5));
-            Assert.Equal("Buzz", fixture.FizzBuzz.Turn(10));
-            Assert.Equal("Buzz", fixture.FizzBuzz.Turn(20));
+            Assert.Equal("Buzz", fixture.KataFizzBuzz.Turn(5));
+            Assert.Equal("Buzz", fixture.KataFizzBuzz.Turn(10));
+            Assert.Equal("Buzz", fixture.KataFizzBuzz.Turn(20));
         }
 
         [Fact]
-        public void ReturnsFizzBuzzIfNumberisMulitpleOfFifteen()
+        public void ReturnsKataFizzBuzzIfNumberisMulitpleOfFifteen()
         {
-            Assert.Equal("FizzBuzz", fixture.FizzBuzz.Turn(15));
-            Assert.Equal("FizzBuzz", fixture.FizzBuzz.Turn(45));
+            Assert.Equal("FizzBuzz", fixture.KataFizzBuzz.Turn(15));
+            Assert.Equal("FizzBuzz", fixture.KataFizzBuzz.Turn(45));
         }
 
         [Fact]
         public void ReturnsEmptyStringIfNumberisMulitpleOfThreeFiveFifteen()
         {
-            Assert.Equal("", fixture.FizzBuzz.Turn(1));
-            Assert.Equal("", fixture.FizzBuzz.Turn(2));
-            Assert.Equal("", fixture.FizzBuzz.Turn(22));
+            Assert.Equal("", fixture.KataFizzBuzz.Turn(1));
+            Assert.Equal("", fixture.KataFizzBuzz.Turn(2));
+            Assert.Equal("", fixture.KataFizzBuzz.Turn(22));
         }
 
-        [Fact]
-        public void AddsRandomNameToPlayerList()
-        {
-            // act
-            fixture.FizzBuzz.AddRandomPlayer();
-            // assert
-            Assert.Equal("testname", fixture.FizzBuzz.Players.First().Name);
-        }
     }
 }

@@ -1,18 +1,14 @@
 ﻿namespace OOSE.FizzBuzzKata.FizzBuzzLogic
 {
-    public class FizzBuzz
+    public class KataFizzBuzz
     {
-        private readonly NameGenerator nameGenerator;
-        private readonly List<Player> players = new List<Player>();
-
         private const string Fizz = "Fizz";
         private const string Buzz = "Buzz";
 
-        public List<Player> Players => players;
 
-        public FizzBuzz(NameGenerator nameGenerator)
+        public KataFizzBuzz()
         {
-            this.nameGenerator = nameGenerator;
+           
         }
 
         public string Turn(int number)
@@ -30,11 +26,6 @@
                 return Buzz;
             }
             return "";
-        }
-
-        public void AddRandomPlayer()
-        {
-            players.Add(new Player(nameGenerator.GenerateRandomName()));
         }
     }
 }

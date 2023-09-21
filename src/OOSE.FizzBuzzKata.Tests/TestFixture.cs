@@ -8,17 +8,19 @@ using OOSE.FizzBuzzKata.FizzBuzzLogic;
 
 namespace OOSE.FizzBuzzKata.Tests
 {
-    public class FizzBuzzFixture
+    public class TestFixture
     {
-        public FizzBuzzFixture()
+        public TestFixture()
         {
             Mock<NameGenerator> mock = new Mock<NameGenerator>();
             mock.Setup(x => x.GenerateRandomName()).Returns("testname");
 
-            FizzBuzz = new FizzBuzz(mock.Object);
+            KataFizzBuzz = new KataFizzBuzz();
+            KataPlayer = new KataPlayerNameGenerator(mock.Object);
         }
 
 
-        public FizzBuzz FizzBuzz { get; private set; }
+        public KataFizzBuzz KataFizzBuzz { get; private set; }
+        public KataPlayerNameGenerator KataPlayer { get; }
     }
 }
